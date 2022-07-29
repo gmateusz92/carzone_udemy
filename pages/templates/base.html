@@ -37,6 +37,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/ie10-viewport-bug-workaround.css' %}">
 
     <script  src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="page_loader"></div>
@@ -49,6 +52,15 @@
 {% block content %}
 
 {% endblock %}
+
+<!-- Full Page Search -->
+<div id="full-page-search">
+    <button type="button" class="close">×</button>
+    <form action="https://storage.googleapis.com/theme-vessel/carhouse/index.html#" class="search-header">
+        <input type="search" value="" placeholder="type keyword(s) here. Eg: audi, benz etc" />
+        <button type="submit" class="btn btn-sm button-theme">Search</button>
+    </form>
+</div>
 
 {% include 'includes/footer.html' %}
 
