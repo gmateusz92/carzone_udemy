@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'cars.apps.CarsConfig',
     'ckeditor', #dodajemy przy models cars
     #'richtexteditor',
-
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
