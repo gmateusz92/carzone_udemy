@@ -177,7 +177,7 @@
                                 <a href="{% url 'car_detail' car.id %}">{{ car.car_title }}</a>
                             </h1>
                             <div class="location">
-                                <a href="car-details.html">
+                                <a href="{% url 'car_detail' car.id %}">
                                     <i class="flaticon-pin"></i>{{ car.state }}, {{ car.city }}
                                 </a>
                             </div>
@@ -223,7 +223,7 @@
                     <div class="car-thumbnail">
                         <a href="car-details.html" class="car-img">
                             <div class="tag">For Sale</div>
-                            <img class="d-block w-100" src="{{ car.car_photo.url }}" alt="car" style="min-height: 262px; max-heigh: 262px;">
+                            <img class="d-block w-100" src="{{ car.car_photo.url }}" alt="car" style="min-height: 262px; max-height: 262px;">
                             <div class="facilities-list clearfix">
                                 <ul>
                                     <li>
@@ -273,17 +273,17 @@
                     </div>
                     <div class="detail">
                         <h1 class="title">
-                            <a href="car-details.html">{{ car.car_title }}</a>
+                            <a href="{% url 'car_detail' car.id %}">{{ car.car_title }}</a>
                         </h1>
                         <div class="location">
-                            <a href="car-details.html">
+                            <a href="{% url 'car_detail' car.id %}">
                                 <i class="flaticon-pin"></i>{{ car.state }}, {{ car.city }}
                             </a>
                         </div>
                     </div>
                     <div class="footer clearfix">
                         <div class="pull-left ratings days">
-                            <p class="cartype">{{ car.body_style }}</p>
+                            <p class="cartype">{{ car.body_style }}            ${{ car.price | intcomma }}</p>
                         </div>
                         <div class="pull-right">
                             <p class="price">${{ car.price | intcomma }}</p>
