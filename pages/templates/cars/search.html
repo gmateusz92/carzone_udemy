@@ -25,47 +25,35 @@
     <div class="container">
         <div class="search-area-inner">
             <div class="search-contents">
-                <form method="GET">
+                <form method="GET" action="{% url 'search' %}">
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-brand">
-                                    <option disabled="disabled" selected="selected">Select Brand</option>
-                                    <option>Audi</option>
-                                    <option>BMW</option>
-                                    <option>Honda</option>
-                                    <option>Nissan</option>
+                                <select class="selectpicker search-fields" name="model">
+                                    <option selected='selected' disabled='disabled'>Select Model</option>
+                                        {% for model in model_search %}
+                                         <option value="{{ model }}" >{{ model }}</option> <---- nie model.model bo to jest lista (funkcja zwraca liste a nie slownik)
+                                        {% endfor %}
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-make">
-                                    <option disabled="disabled" selected="selected">Select Make</option>
-                                    <option>BMW</option>
-                                    <option>Honda</option>
-                                    <option>Lamborghini Huracán</option>
-                                    <option>Sports Car</option>
+                                <select class="selectpicker search-fields" name="city">
+                                    <option selected='selected' disabled='disabled'>Select Location</option>
+                                    {% for city in city_search %}
+                                    <option value="{{ city }}" >{{ city }}</option> <---- nie city.city bo to jest lista (funkcja zwraca liste a nie slownik)
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-location">
-                                    <option disabled="disabled" selected="selected">Select Location</option>
-                                    <option>United States</option>
-                                    <option>United Kingdom</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-year">
-                                    <option disabled="disabled" selected="selected">Select Year</option>
-                                    <option>2016</option>
-                                    <option>2017</option>
-                                    <option>2018</option>
-                                    <option>2019</option>
+                                <select class="selectpicker search-fields" name="year">
+                                    <option selected='selected' disabled='disabled'>Select Year</option>
+                                   {% for year in year_search %}
+                                    <option value="{{ year }}" >{{ year }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -73,19 +61,21 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-type">
-                                    <option disabled="disabled" selected="selected">Select Type Of Car</option>
-                                    <option>New Car</option>
-                                    <option>Used Car</option>
+                                <select class="selectpicker search-fields" name="body_style">
+                                     <option selected='selected' disabled='disabled'>Select Type Of Car</option>
+                                   {% for body_style in body_style_search %}
+                                    <option value="{{ body_style }}" >{{ body_style }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="transmission">
-                                    <option disabled="disabled" selected="selected">Transmission</option>
-                                    <option>Automatic</option>
-                                    <option>Manual</option>
+                                     <option selected='selected' disabled='disabled'>Transmission</option>
+                                   {% for transmission in transmission_search %}
+                                    <option value="{{ transmission }}" >{{ transmission }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -187,7 +177,7 @@
                     </div>
                     <div class="footer clearfix">
                         <div class="pull-left ratings days">
-                            <p class="cartype">{{ car.body_style }}            ${{ car.price | intcomma }}</p>
+                            <p class="cartype">{{ car.body_style }}  ${{ car.price | intcomma }}</p>
                         </div>
                         <div class="pull-right">
                             <p class="price">${{ car.price | intcomma }}</p>
