@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+
+{% block title %} | Search result {% endblock %}
 {% block content %}
 
 {% load humanize %}
@@ -31,9 +33,9 @@
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="model">
                                     <option selected='selected' disabled='disabled'>Select Model</option>
-                                        {% for model in model_search %}
-                                         <option value="{{ model }}" >{{ model }}</option> <---- nie model.model bo to jest lista (funkcja zwraca liste a nie slownik)
-                                        {% endfor %}
+                                    {% for model in model_search %}
+                                      <option value="{{model}}">{{model}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -42,7 +44,7 @@
                                 <select class="selectpicker search-fields" name="city">
                                     <option selected='selected' disabled='disabled'>Select Location</option>
                                     {% for city in city_search %}
-                                    <option value="{{ city }}" >{{ city }}</option> <---- nie city.city bo to jest lista (funkcja zwraca liste a nie slownik)
+                                      <option value="{{city}}">{{city}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -51,8 +53,8 @@
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="year">
                                     <option selected='selected' disabled='disabled'>Select Year</option>
-                                   {% for year in year_search %}
-                                    <option value="{{ year }}" >{{ year }}</option>
+                                    {% for year in year_search %}
+                                      <option value="{{year}}">{{year}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -62,9 +64,9 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="body_style">
-                                     <option selected='selected' disabled='disabled'>Select Type Of Car</option>
-                                   {% for body_style in body_style_search %}
-                                    <option value="{{ body_style }}" >{{ body_style }}</option>
+                                    <option selected='selected' disabled='disabled'>Select Type Of Car</option>
+                                    {% for body_style in body_style_search %}
+                                      <option value="{{body_style}}">{{body_style}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -72,9 +74,9 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="transmission">
-                                     <option selected='selected' disabled='disabled'>Transmission</option>
-                                   {% for transmission in transmission_search %}
-                                    <option value="{{ transmission }}" >{{ transmission }}</option>
+                                    <option selected='selected' disabled='disabled'>Transmission</option>
+                                    {% for transmission in transmission_search %}
+                                      <option value="{{transmission}}">{{transmission}}</option>
                                     {% endfor %}
                                 </select>
                             </div>

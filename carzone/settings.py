@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import accounts.apps
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -28,6 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'dashboard' # do logowania na fb
 
 # Application definition
 
@@ -39,10 +42,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig', #<-----
+    'accounts.apps.AccountsConfig',
     'cars.apps.CarsConfig',
+    'contacts.apps.ContactsConfig',
     'ckeditor', #dodajemy przy models cars
     #'richtexteditor',
     'django.contrib.humanize',
+    'django.contrib.sites', # potrzebne do logowania przez fb/ google
+    'allauth', # potrzebne do logowania przez fb/ google
+    'allauth.account', # potrzebne do logowania przez fb/ google
+    'allauth.socialaccount', # potrzebne do logowania przez fb/ google
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+
+
 ]
 
 MIDDLEWARE = [
@@ -138,3 +151,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # trzeba stworzyc folder media zeby wrzucalo piliki
 MEDIA_URL = '/media/'
+
+# Messages - do wyswietlania podczas rejestracji - tworze nowy template messages
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+SITE_ID = 1 # do logowania na fb
+
+# wysylanie email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'gmateusz92@gmail.com'
+EMAIL_HOST_PASSWORD = 'nbmovagqtlkadxwu' # trzeba ustawic gmail apps password
+EMAIL_USE_TLS = True
