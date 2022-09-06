@@ -25,7 +25,11 @@ def inquiry(request):
                 messages.error(request, 'You have already made an inquiry this car. Please wait for respond.')
                 return redirect('/cars/' + car_id)
 
-        # chcemy wyslac email zanim zapiszemy formularz w bazie danych dlatego tutaj to jest
+
+        # potrzebne do zapisania w bazie danych
+        contact = Contact(car_id=car_id, car_title=car_title, user_id=user_id, first_name=first_name,
+                                  last_name=last_name, customer_need=customer_need,
+                                  city=city, state=state, email=email, phone=phone, message=message)
 
         admin_info = User.objects.get(is_superuser=True) #wchcemy zeby wyslac email na superusera-admina
         admin_email = admin_info.email
@@ -37,10 +41,8 @@ def inquiry(request):
             fail_silently=False,
         )
 
-        contact = Contact(car_id=car_id, car_title=car_title, user_id=user_id, first_name=first_name, last_name=last_name, customer_need=customer_need,
-                          city=city, state=state, email=email, phone=phone, message=message)
         contact.save()
         messages.success(request, 'You request have been submitted, we will back to you shortly.')
         return redirect('/cars/' + car_id)
 
-    return
+

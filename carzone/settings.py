@@ -165,5 +165,5 @@ SITE_ID = 1 # do logowania na fb
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'gmateusz92@gmail.com'
-EMAIL_HOST_PASSWORD = 'uyxabrqgbbhkvwoj' # trzeba ustawic gmail apps password
+EMAIL_HOST_PASSWORD = 'enhhiyllhcphehvq' # trzeba ustawic gmail apps password
 EMAIL_USE_TLS = True
